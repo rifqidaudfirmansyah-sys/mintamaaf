@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maafin Aku Ya ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ffd6e7,#ffc2d6,#ffb3d1);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    width:400px;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+h1{
+    color:#ff4f87;
+    margin-bottom:15px;
+}
+
+p{
+    color:#666;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:2px solid pink;
+    outline:none;
+    margin-bottom:20px;
+    text-align:center;
+    font-size:16px;
+}
+
+#namaTampil{
+    color:#ff2f75;
+    font-weight:bold;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    padding:15px 25px;
+    border-radius:15px;
+    color:white;
+    font-size:18px;
+    transition:.3s;
+}
+
+#yes{
+    background:#ff4081;
+    margin-right:15px;
+}
+
+#no{
+    background:#888;
+}
+
+#hasil{
+    margin-top:25px;
+    color:#ff4081;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.hearts{
+    font-size:40px;
+    animation:pop 0.8s infinite alternate;
+}
+
+@keyframes pop{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.3);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🥺 Maafin Aku Ya</h1>
+
+<p>Masukkan nama kamu dulu ❤️</p>
+
+<input type="text" id="nama" placeholder="Nama kamu">
+
+<p id="pertanyaan">
+Mau maafin <span id="namaTampil">aku</span> nggak?
+</p>
+
+<div style="margin-top:20px;">
+<button id="yes">❤️ Maafin</button>
+<button id="no">🙈 Nggak</button>
+</div>
+
+<div id="hasil"></div>
+
+</div>
+
+<script>
+
+const nama=document.getElementById("nama");
+const namaTampil=document.getElementById("namaTampil");
+
+nama.addEventListener("input",()=>{
+    if(nama.value==""){
+        namaTampil.innerHTML="aku";
+    }else{
+        namaTampil.innerHTML=nama.value;
+    }
+});
+
+let yes=document.getElementById("yes");
+let no=document.getElementById("no");
+
+let yesSize=1;
+let noSize=1;
+
+no.addEventListener("click",()=>{
+
+    yesSize+=0.25;
+    noSize-=0.12;
+
+    yes.style.transform=`scale(${yesSize})`;
+
+    if(noSize>0.2){
+        no.style.transform=`scale(${noSize})`;
+    }else{
+        no.style.display="none";
+    }
+
+});
+
+yes.addEventListener("click",()=>{
+
+document.getElementById("hasil").innerHTML=
+`
+<div class="hearts">💖💖💖</div>
+Terima Kasih ${nama.value || "Cantik"} ❤️<br>
+janji gak melukai hatine sinta 🥺
+`;
+
+});
+
+</script>
+
+</body>
+</html>
